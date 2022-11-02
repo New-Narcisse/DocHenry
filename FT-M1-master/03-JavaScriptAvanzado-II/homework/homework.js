@@ -19,6 +19,12 @@ function counter() {
   otroContador()      // 2
   otroContador()      // 3
    */
+  
+  const add = (function () {
+    let counter = 0;
+    return function () {counter += 1; return counter;}
+  })();
+  return add;
 }
 
 function cacheFunction(cb) {

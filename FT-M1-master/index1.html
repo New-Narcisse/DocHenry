@@ -8,10 +8,27 @@
 </head>
 <body>
     <script>
-        var a = 1;
+        var a = 3;
         let b = 2;
         console.log(a)
         console.log(b)
+        var creaFuncion = function(){
+  var arreglo = [];
+  for ( var i=0; i < 3; i++){
+    arreglo.push(
+      (function(j){
+        return function() {console.log(j);}
+      }(i))
+    )
+  }
+  return arreglo;
+}
+
+var arr = creaFuncion();
+
+arr[0]() // 1
+arr[1]() // 2
+arr[2]() // 3
     </script>
 </body>
 </html>
