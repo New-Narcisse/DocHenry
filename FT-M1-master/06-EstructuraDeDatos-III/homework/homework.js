@@ -61,16 +61,19 @@ BinarySearchTree.prototype.contains = function(value){
 
 BinarySearchTree.prototype.depthFirstForEach = function(cb, order){
   if(order === 'post-order'){
+        //post-order
     //izq - der - root
     if(this.left !== null) this.left.depthFirstForEach(cb, order)
     if(this.right !== null) this.right.depthFirstForEach(cb, order)
     cb(this.value);
   }else if(order === 'pre-order'){
+        //pre-order
      //root - izq - der
     cb(this.value);
     if(this.left !== null) this.left.depthFirstForEach(cb, order);
     if(this.right !== null) this.right.depthFirstForEach(cb, order);
       }else{
+        //in-order
     // izq - root - der
     if(this.left !== null) this.left.depthFirstForEach(cb, order)
     cb(this.value);
