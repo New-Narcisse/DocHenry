@@ -16,7 +16,16 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let newArr = [];
+    let total = 0;
+    for(let i = 0; i < array.length; i ++){
+        if(Array.isArray(array[i])){
+           total += countArray(array[i]);
+        }else{
+            total += array[i]
+        }
+    }
+    return total;
 }
 
 
@@ -39,7 +48,14 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    let ctr = 0;
+    for(key in obj){
+        if(typeof obj[key] === 'object' && !Array.isArray(obj[key])){
+            ctr += countProps(obj[key]);
+        }
+        ctr++;
+    }
+    return ctr;
 }
 
 
@@ -53,7 +69,16 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
-
+    var current = this.head
+    let contador = 0;
+    while(current !== null){
+        if(isNaN(current.value)){
+            current.value = 'Kirikocho';
+            contador++;
+        }
+        current = current.next
+    }
+    return contador;
 }
 
 
@@ -67,7 +92,16 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
-
+        let ordenado = new Queue();
+        while (queueOne.size() || queueTwo.size()) {
+          if (queueOne.size()) {
+             ordenado.enqueue(queueOne.dequeue())
+          }
+          if(queueTwo.size()) {
+               ordenado.enqueue(queueTwo.dequeue())
+          }
+        }
+    return ordenado;
 }
 
 
@@ -89,7 +123,12 @@ var closureMult = function(multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
-
+    let suma = this.value;
+​
+    if(this.left !== null) {suma = suma + this.left.sum()};
+    if(this.right !== null){suma = suma + this.right.sum()};
+​
+    return suma;
 }
 
 module.exports = {
