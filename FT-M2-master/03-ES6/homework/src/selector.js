@@ -57,7 +57,6 @@ var selectorTypeMatcher = function(selector) { // selector = ".class", "#id", "t
     if(selector[i] === ".") return "tag.class"
   }
   return "tag";
-
 };
 
 // NOTA SOBRE LA FUNCIÓN MATCH
