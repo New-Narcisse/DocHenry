@@ -1,11 +1,22 @@
+
 .divBienvenido {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+
+
   background-color: #c5c5c5a2;
+   background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80");
+  color: #eee;
+  width: 100%;
+  height: 100vh;
+
+
+
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  animation: animation 100s linear infinite;
 }
 
 .title {
@@ -13,7 +24,7 @@
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
-  color: rgb(26, 26, 130)
+  color: white
 }
 
 .subtitle {
@@ -22,13 +33,18 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
-
+@keyframes animation {
+   100%{
+    background-position:0px -3000px;
+  }
+}
 .unorderedList {
   list-style-type: none;
   padding: 0;
   margin-bottom: 3em;
   display: flex;
   flex-direction: row;
+
 }
 
 .listItem {
@@ -49,7 +65,7 @@
   color: beige;
 }
 
-.listItem img {
+.listItem2 {
   width: 50%;
   object-fit: cover;
   margin: 15px;

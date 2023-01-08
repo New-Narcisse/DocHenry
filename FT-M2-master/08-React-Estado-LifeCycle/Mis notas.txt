@@ -1,0 +1,37 @@
+..............--------------............ESTADOS..............--------------............
+
+1. Las props son la configuracion incial del componente
+2. En componentes de clase el componente tiene un atributo de clase llamado 'state'. 
+   Al cual podremos acceder de esta forma: this.state.
+3. El estado osea el state, puede ser lo q se quiera: obj, variable, etc.
+4. Esta es la arquitectura de un componente de clase:
+
+                import React from 'react';
+                import ReactDOM from 'react-dom';
+
+                class HelloWorld extends React.Component {
+                  constructor(props) {
+                    super(props);----------------esto es como establecer las props como base par poder trabajar con ellas
+                    this.state = {name: this.props.name}--------estamos especificando el estado (es inmutable)
+                    this.onButtonClick = this.onButtonClick.bind(this);---bindeamos el 'this' al onButtonClick para que sepa a que this nos referimos
+                  }
+                  onButtonClick(e){------- esta funcion la creamos pera modificar el estado cada vez que se invoque (la estamos invocando con cada click o submit en la linea 28)
+                    e.preventDefault();----el evento e deberia recargar la pagina pero con esta sintaxis le decimos que no lo haga.
+                    const name = this.refs.name.value;
+                    this.setState({     ------nos permite modificar el estado y es una funcion de React
+                      name: name
+                    });
+                  }
+                  render(){ --- Recuerda que el render es para agregar info al DOM osea para mostrarse en pantalla
+                    return (
+                      <div>
+                        <form onSubmit={this.onButtonClick}>
+                          <input type='text' ref='name' />
+                          <button>Poner Nombre</button>
+                        </form>
+                        Hola, {this.state.name}!!
+                      </div>  
+                    )
+                  }
+                };
+                ReactDOM.render(<HelloWorld name='Soy Henry' />, document.getElementById('app'));
